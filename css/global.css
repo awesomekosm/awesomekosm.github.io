@@ -40,9 +40,16 @@ html, body, .container-table {
     padding-bottom: 0.5em;
 }
 
-.logContentEntry{
+.logContentEntry {
     border-bottom: 1px solid #ddd;
     padding-bottom: 1em;
+}
+
+.links {
+    width: 1em;
+    opacity: 0.5;
+    display: inline-block !important;
+    padding-bottom: 4px;
 }
 
 html * {
