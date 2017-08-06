@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Totally EMB</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="css/global.css" rel="stylesheet"/>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <script
+                src="https://code.jquery.com/jquery-1.12.4.min.js"
+                integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header hidden-xs">
+                <span class="larger-font">Eugene Barnett</span>
+                <a href="https://goo.gl/maps/gDaJPB1ysvC2"><span class="pull-right larger-font" style="color: cornflowerblue">USA ATL</span></a>
+            </div>
+            <div class="navbar-header navbar-default" style="border-bottom: 1px solid #eee;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <span class="navbar-brand visible-xs larger-font">TotallyEMB</span>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a data-toggle="tab" href="#log" translate="label.log">Log</a></li>
+                    <li><a data-toggle="tab" href="#projects" translate="label.projects">Projects</a></li>
+                    <li><a data-toggle="tab" href="#about" translate="label.about">About</a></li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div id="log" class="tab-pane active">
+                    <div class="no-pad" id="logContent">
+                        <div class="logContentEntry">
+                            <h3>Javascript - Translate Your Website ES5</h3>
+                            <p>7/29/2017</p>
+                            <p>To Be Updated</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="projects" class="tab-pane">
+                    <h3 translate="label.projects">Projects</h3>
+                    <p>Collapsible tabs with limited preview of the content</p>
+                </div>
+                <div id="about" class="tab-pane">
+                    <h3 translate="label.about">About</h3>
+                    <p>Intro from first person and collapsible resume - clickable to download pdf</p>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-fixed-bottom container" id="footer">
+            <div class="pull-right bottom">
+                <a href="javascript:translationHandle.translateTo('ru');" class="translationToggle">Русский</a>
+                <a href="javascript:translationHandle.translateTo('en');" class="translationToggle">English</a>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                var historyStackTop;
+                if (location.hash !== '') {
+                    $('a[href="' + location.hash + '"]').tab('show');
+                    historyStackTop = location.hash;
+                }
+                $('a[data-toggle="tab"]').on('click', function (e) {
+                    if ($(this).attr('href') !== historyStackTop) {
+                        history.pushState(null, null, $(this).attr('href'));
+                        historyStackTop = $(this).attr('href');
+                    }
+                });
+                window.addEventListener("popstate", function (e) {
+                    var activeTab = $('[href="' + location.hash + '"]');
+                    if (activeTab.length) {
+                        historyStackTop = location.hash;
+                        activeTab.tab('show');
+                    } else {
+                        $('.nav-tabs a:first').tab('show');
+                    }
+                });
+            });
+
+            //define translations
+            var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
+                var allElements = null;
+                if (scope) {
+                    allElements = document.querySelector(scope);
+                    allElements = allElements.querySelectorAll('[' + attrName + ']');
+                } else {
+                    allElements = document.querySelectorAll('[' + attrName + ']');
+                }
+                var translateTo = function (language) {
+                    if (allElements && allElements.length > 0) {
+                        for (var i = 0; i < allElements.length; i++) {
+                            var attrValue = allElements[i].getAttribute(attrName);
+                            if (jsonTranslation[attrValue]) {
+                                var translation = jsonTranslation[attrValue][language];
+                                if (translation) {
+                                    allElements[i].innerHTML = translation;
+                                }
+                            }
+                        }
+                    }
+                };
+                translateTo(lang);
+                return {
+                    translateTo: translateTo
+                };
+            };
+
+            var translationsJSON = {
+                "label.log": {"en": "Log", "ru": "Журнал"},
+                "label.projects": {"en": "Projects", "ru": "Проекты"},
+                "label.about": {"en": "About", "ru": "Обо Мне"}
+            };
+
+            var defaultLanguage = "en";
+            var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");
+
+            var translationToggleSelection = $(".translationToggle");
+            translationToggleSelection.click(function () {
+                $(".translationToggle").css("opacity", "0.8");
+                $(this).css("opacity", "0.5");
+            });
+
+            $(translationToggleSelection[1]).css("opacity", "0.5");
+            //end translations
+        </script>
+    </body>
+</html>

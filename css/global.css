@@ -1,0 +1,51 @@
+html, body, .container-table {
+    height: 100%;
+}
+
+.larger-font {
+    font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+    .nav-tabs.nav-justified > li {
+        width: 33%;
+        float: left;
+        overflow: hidden;
+    }
+
+    .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:hover {
+        border-bottom: 0;
+    }
+
+    .nav-tabs.nav-justified > li > a {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-header {
+        margin-bottom: 10px;
+    }
+}
+
+.tab-content {
+    margin: 1em;
+}
+
+.translationToggle {
+    opacity: 0.8;
+}
+
+#footer {
+    padding-bottom: 0.5em;
+}
+
+.logContentEntry{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 1em;
+}
+
+html * {
+    color: #000;
+    font-family: Montserrat, sans-serif !important;
+}
