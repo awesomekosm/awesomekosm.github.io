@@ -18,6 +18,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
                 crossorigin="anonymous"></script>
+        <script src="js/w3.js"></script>
     </head>
     <body>
         <div class="container">
@@ -55,11 +56,7 @@
             <div class="tab-content">
                 <div id="log" class="tab-pane active">
                     <div class="no-pad" id="logContent">
-                        <div class="logContentEntry">
-                            <h3>Javascript - Translate Your Website ES5</h3>
-                            <p>7/29/2017</p>
-                            <p>To Be Updated</p>
-                        </div>
+                        <div class="logContentEntry" w3-include-html="logs/translations-js.html"></div>
                     </div>
                 </div>
                 <div id="projects" class="tab-pane">
@@ -100,6 +97,7 @@
                         $('.nav-tabs a:first').tab('show');
                     }
                 });
+                w3.includeHTML();
             });
 
             //define translations
