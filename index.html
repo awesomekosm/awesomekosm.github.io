@@ -95,6 +95,13 @@
                 });
                 w3.includeHTML(function () {
                     hljs.initHighlighting();
+                    var translationToggleSelection = $(".translationToggle");
+                    translationToggleSelection.click(function () {
+                        $(".translationToggle").css("opacity", "0.8");
+                        $(this).css("opacity", "0.5");
+                    });
+
+                    $(translationToggleSelection[1]).css("opacity", "0.5");
                 });
             });
 
@@ -136,13 +143,6 @@
             var defaultLanguage = "en";
             var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");
 
-            var translationToggleSelection = $(".translationToggle");
-            translationToggleSelection.click(function () {
-                $(".translationToggle").css("opacity", "0.8");
-                $(this).css("opacity", "0.5");
-            });
-
-            $(translationToggleSelection[1]).css("opacity", "0.5");
             //end translations
         </script>
     </body>
