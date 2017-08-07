@@ -10,6 +10,7 @@
               crossorigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="css/global.css" rel="stylesheet"/>
+        <link href="css/highlight-default.css" rel="stylesheet"/>
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <script
                 src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -19,12 +20,13 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
                 crossorigin="anonymous"></script>
         <script src="js/w3.js"></script>
+        <script src="js/highlight.pack.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="page-header hidden-xs">
                 <span class="larger-font">
-                    Eugene Barnett&nbsp;
+                    <span translate="label.name"></span>&nbsp;
                     <a href="https://www.linkedin.com/in/embarnett"><img src="svg/linkedin.svg" class="links"></a>&nbsp;
                     <a href="https://github.com/z-emb"><img src="svg/github.svg" class="links"></a>&nbsp;
                     <a href="https://bitbucket.org/TotallyEMB"><img src="svg/bitbucket.svg" class="links"></a>&nbsp;
@@ -40,7 +42,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <span class="navbar-brand visible-xs">
-                    Eugene Barnett&nbsp;
+                    <span translate="label.name"></span>&nbsp;
                     <a href="https://www.linkedin.com/in/embarnett"><img src="svg/linkedin.svg" class="links"></a>&nbsp;
                     <a href="https://github.com/z-emb"><img src="svg/github.svg" class="links"></a>&nbsp;
                     <a href="https://bitbucket.org/TotallyEMB"><img src="svg/bitbucket.svg" class="links"></a>&nbsp;
@@ -69,12 +71,6 @@
                 </div>
             </div>
         </div>
-        <div class="navbar-fixed-bottom container" id="footer">
-            <div class="pull-right bottom">
-                <a href="javascript:translationHandle.translateTo('ru');" class="translationToggle">Русский</a>
-                <a href="javascript:translationHandle.translateTo('en');" class="translationToggle">English</a>
-            </div>
-        </div>
         <script>
             $(document).ready(function () {
                 var historyStackTop;
@@ -97,7 +93,9 @@
                         $('.nav-tabs a:first').tab('show');
                     }
                 });
-                w3.includeHTML();
+                w3.includeHTML(function () {
+                    hljs.initHighlighting();
+                });
             });
 
             //define translations
@@ -131,7 +129,8 @@
             var translationsJSON = {
                 "label.log": {"en": "Log", "ru": "Журнал"},
                 "label.projects": {"en": "Projects", "ru": "Проекты"},
-                "label.about": {"en": "About", "ru": "Обо Мне"}
+                "label.about": {"en": "About", "ru": "Обо Мне"},
+                "label.name": {"en": "Eugene Barnett", "ru": "Евгений Barnett"}
             };
 
             var defaultLanguage = "en";

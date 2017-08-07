@@ -1,3 +1,45 @@
-<h3>Javascript - Translate Your Website ES5</h3>
+<h3>Translate Your Website - Javascript ES5</h3>
 <p>7/29/2017</p>
-<p>To Be Updated</p>
+<pre>
+    <code>
+    var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
+        var allElements = null;
+        if (scope) {
+            allElements = document.querySelector(scope);
+            allElements = allElements.querySelectorAll('[' + attrName + ']');
+        } else {
+            allElements = document.querySelectorAll('[' + attrName + ']');
+        }
+        var translateTo = function (language) {
+            if (allElements && allElements.length > 0) {
+                for (var i = 0; i < allElements.length; i++) {
+                    var attrValue = allElements[i].getAttribute(attrName);
+                    if (jsonTranslation[attrValue]) {
+                        var translation = jsonTranslation[attrValue][language];
+                        if (translation) {
+                            allElements[i].innerHTML = translation;
+                        }
+                    }
+                }
+            }
+        };
+        translateTo(lang);
+        return {
+            translateTo: translateTo
+        };
+    };
+
+    var translationsJSON = {
+        "label.log": {"en": "Log", "ru": "Журнал"},
+        "label.projects": {"en": "Projects", "ru": "Проекты"},
+        "label.about": {"en": "About", "ru": "Обо Мне"}
+    };
+
+    var defaultLanguage = "en";
+    var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");
+    </code>
+</pre>
+<div>
+    <a href="javascript:translationHandle.translateTo('ru');" class="translationToggle">Русский</a>
+    <a href="javascript:translationHandle.translateTo('en');" class="translationToggle">English</a>
+</div>
