@@ -23,7 +23,7 @@
         <script src="js/highlight.pack.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container" id="content">
             <div class="page-header hidden-xs">
                 <span class="larger-font">
                     <span translate="label.name"></span>&nbsp;
@@ -70,6 +70,12 @@
                     <p>Intro from first person and collapsible resume - clickable to download pdf</p>
                 </div>
             </div>
+        </div>
+        <div class="container" id="footer">
+            <span class="pull-right">
+                <a href="javascript:translationHandle.translateTo('ru');" class="translationToggle">Русский</a>
+                <a href="javascript:translationHandle.translateTo('en');" class="translationToggle">English</a>
+            </span>
         </div>
         <script>
             $(document).ready(function () {

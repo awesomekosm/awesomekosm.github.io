@@ -1,7 +1,3 @@
-html, body, .container-table {
-    height: 100%;
-}
-
 .larger-font {
     font-size: 1.5em;
 }
@@ -36,8 +32,12 @@ html, body, .container-table {
     opacity: 0.8;
 }
 
+#content {
+    min-height: calc(100vh - 2em);
+}
+
 #footer {
-    padding-bottom: 0.5em;
+    height: 2em;
 }
 
 .logContentEntry {
