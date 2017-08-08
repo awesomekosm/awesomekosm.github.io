@@ -1,5 +1,10 @@
 <h3>Translate Your Website - Javascript ES5</h3>
 <p>7/29/2017</p>
+<br/>
+<p>
+    After thinking about ways to translate parts of a web page, I've arrived at the following little script.
+    It's self contained, no dependencies on jQuery or Angular etc.
+</p>
 <pre>
     <code>
     var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
@@ -28,14 +33,40 @@
             translateTo: translateTo
         };
     };
-
+    </code>
+</pre>
+<p>
+    The most basic use case must includes a translation JSON, default language, and an element's attribute name.<br>
+    Default language will be applied on instantiation of EMBTranslate object.
+</p>
+<pre>
+    <code>
     var translationsJSON = {
-        "label.log": {"en": "Log", "ru": "Журнал"},
-        "label.projects": {"en": "Projects", "ru": "Проекты"},
-        "label.about": {"en": "About", "ru": "Обо Мне"}
+        "tr.log": {"en": "Log", "ru": "Журнал"},
+        "tr.projects": {"en": "Projects", "ru": "Проекты"},
+        "tr.about": {"en": "About", "ru": "Обо Мне"}
     };
 
     var defaultLanguage = "en";
     var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");
+    </code>
+</pre>
+<p>
+    Element's attribute name is defined by you to avoid conflict with other translation mechanisms such as angular's data-translate.<br>
+    Inner HTML of those elements will be substituted by values in translationsJSON based on tr key and language passed as a default
+</p>
+<pre>
+    <code>
+    &lt;li class=&quot;active&quot;&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#log&quot; translate=&quot;tr.log&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#projects&quot; translate=&quot;tr.projects&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#about&quot; translate=&quot;tr.about&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+    </code>
+</pre>
+<p>
+    EMBTranslate exposes <b>translateTo</b> method to dynamically toggle translations.
+</p>
+<pre>
+    <code>
+        &lt;a href=&quot;javascript:translationHandle.translateTo('ru');&quot;&gt;Русский&lt;/a&gt;
     </code>
 </pre>
