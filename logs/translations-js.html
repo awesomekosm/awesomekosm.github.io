@@ -5,57 +5,51 @@
     After thinking about ways to translate parts of a web page, I've arrived at the following little script.
     It's self contained, no dependencies on jQuery or Angular etc.
 </p>
-<pre><code>
-    var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
-        var allElements = null;
-        if (scope) {
-            allElements = document.querySelector(scope);
-            allElements = allElements.querySelectorAll('[' + attrName + ']');
-        } else {
-            allElements = document.querySelectorAll('[' + attrName + ']');
-        }
-        var translateTo = function (language) {
-            if (allElements && allElements.length > 0) {
-                for (var i = 0; i < allElements.length; i++) {
-                    var attrValue = allElements[i].getAttribute(attrName);
-                    if (jsonTranslation[attrValue]) {
-                        var translation = jsonTranslation[attrValue][language];
-                        if (translation) {
-                            allElements[i].innerHTML = translation;
-                        }
+<pre><code>var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
+    var allElements = null;
+    if (scope) {
+        allElements = document.querySelector(scope);
+        allElements = allElements.querySelectorAll('[' + attrName + ']');
+    } else {
+        allElements = document.querySelectorAll('[' + attrName + ']');
+    }
+    var translateTo = function (language) {
+        if (allElements && allElements.length > 0) {
+            for (var i = 0; i < allElements.length; i++) {
+                var attrValue = allElements[i].getAttribute(attrName);
+                if (jsonTranslation[attrValue]) {
+                    var translation = jsonTranslation[attrValue][language];
+                    if (translation) {
+                        allElements[i].innerHTML = translation;
                     }
                 }
             }
-        };
-        translateTo(lang);
-        return {
-            translateTo: translateTo
-        };
+        }
     };
-    </code></pre>
+    translateTo(lang);
+    return {
+        translateTo: translateTo
+    };
+};</code></pre>
 <p>
     The most basic use case must includes a translation JSON, default language, and an element's attribute name.<br>
     Default language will be applied on instantiation of EMBTranslate object.
 </p>
-<pre><code>
-    var translationsJSON = {
-        "tr.log": {"en": "Log", "ru": "Журнал"},
-        "tr.projects": {"en": "Projects", "ru": "Проекты"},
-        "tr.about": {"en": "About", "ru": "Обо Мне"}
-    };
+<pre><code>var translationsJSON = {
+    "tr.log": {"en": "Log", "ru": "Журнал"},
+    "tr.projects": {"en": "Projects", "ru": "Проекты"},
+    "tr.about": {"en": "About", "ru": "Обо Мне"}
+};
 
-    var defaultLanguage = "en";
-    var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");
-    </code></pre>
+var defaultLanguage = "en";
+var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");</code></pre>
 <p>
     Element's attribute name is defined by you to avoid conflict with other translation mechanisms such as angular's data-translate.<br>
     Inner HTML of those elements will be substituted by values in <b>translationsJSON</b> based on <b>tr</b> key and <b>defaultLanguage</b>
 </p>
-<pre><code>
-    &lt;li class=&quot;active&quot;&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#log&quot; translate=&quot;tr.log&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#projects&quot; translate=&quot;tr.projects&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#about&quot; translate=&quot;tr.about&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-    </code></pre>
+<pre><code>&lt;li class=&quot;active&quot;&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#log&quot; translate=&quot;tr.log&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#projects&quot; translate=&quot;tr.projects&quot;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#about&quot; translate=&quot;tr.about&quot;&gt;&lt;/a&gt;&lt;/li&gt;</code></pre>
 <p>
     EMBTranslate exposes <b>translateTo</b> method to dynamically toggle translations.
 </p>
@@ -67,8 +61,10 @@
     &lt;span translate=&quot;tr.zone&quot;&gt;USA ATL&lt;/span&gt;
 &lt;/div&gt;
 &lt;script&gt;
-    //for class
-    new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;.container&quot;);
     //for id
     new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;#content&quot;);
+    //for class
+    new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;.container&quot;);
+    //for element
+    new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;div&quot;);
 &lt;/script&gt;</code></pre>
