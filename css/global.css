@@ -45,6 +45,10 @@
     padding-bottom: 1em;
 }
 
+.logContentEntry a{
+    color: #337ab7 !important;
+}
+
 .links {
     width: 1em;
     opacity: 0.5;
