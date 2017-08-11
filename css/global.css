@@ -22,6 +22,10 @@
     .navbar-header {
         margin-bottom: 10px;
     }
+
+    .logContentEntry {
+        height: 40vh;
+    }
 }
 
 .tab-content {
@@ -40,12 +44,32 @@
     height: 2em;
 }
 
-.logContentEntry {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 1em;
+@media (min-width: 768px) {
+    .logContentEntry {
+        height: 30vh;
+    }
 }
 
-.logContentEntry a{
+.logContentEntry {
+    overflow: hidden;
+}
+
+.logContentExpand {
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    position: relative;
+}
+
+.logContentFadeOut {
+    height: 30px;
+    position: absolute;
+    margin-top: -25px;
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent, white);
+}
+
+.logContentEntry a {
     color: #337ab7 !important;
 }
 
@@ -54,6 +78,25 @@
     opacity: 0.5;
     display: inline-block !important;
     padding-bottom: 4px;
+}
+
+.expandArrow{
+    display:inherit;
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transform:rotate(-90deg);
+    -moz-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.flip{
+    -webkit-transform:rotate(90deg) !important;
+    -moz-transform:rotate(90deg) !important;
+    -o-transform:rotate(90deg) !important;
+    transform: rotate(90deg) !important;
 }
 
 html * {
