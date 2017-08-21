@@ -80,23 +80,40 @@
     padding-bottom: 4px;
 }
 
-.expandArrow{
-    display:inherit;
+.expandArrow {
+    display: inherit;
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
     transition-duration: 0.5s;
-    -webkit-transform:rotate(-90deg);
-    -moz-transform:rotate(-90deg);
-    -o-transform:rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
     transform: rotate(-90deg);
 }
 
-.flip{
-    -webkit-transform:rotate(90deg) !important;
-    -moz-transform:rotate(90deg) !important;
-    -o-transform:rotate(90deg) !important;
+.flip {
+    -webkit-transform: rotate(90deg) !important;
+    -moz-transform: rotate(90deg) !important;
+    -o-transform: rotate(90deg) !important;
     transform: rotate(90deg) !important;
+}
+
+.toast {
+    text-align: center;
+    position: fixed;
+    background-color: green;
+    filter: Alpha(opacity=50);
+    opacity: 0.0;
+    width: 100%;
+    top: 0;
+    right: 0;
+    -webkit-transition: opacity 2s linear; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s linear;
+}
+
+.toast span {
+    color: white;
 }
 
 html * {

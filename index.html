@@ -78,6 +78,7 @@
                 <a href="javascript:translationHandle.translateTo('en');" class="translationToggle">English</a>
             </span>
         </div>
+        <div class="toast"><span></span></div>
         <script>
             $(document).ready(function () {
                 var historyStackTop;
@@ -155,6 +156,7 @@
             $(translationToggleSelection[1]).css("opacity", "0.5");
             //end translations
 
+            //start expand log content
             function logExpandCss() {
                 var logEntry = $(".logContentEntry");
                 var fadeEntryDiv = $("<div>").addClass("logContentFadeOut");
@@ -166,7 +168,13 @@
 
                 expandDiv.append(fadeEntryDiv);
                 expandDiv.append(expandAnchor);
-                expandAnchor.css({"margin-top": "0.5em", "width": "100%", "background": "0", "border": "0", "outline":"0"});
+                expandAnchor.css({
+                    "margin-top": "0.5em",
+                    "width": "100%",
+                    "background": "0",
+                    "border": "0",
+                    "outline": "0"
+                });
                 logEntry.after(expandDiv);
                 var buttonList = $("#logContent").find("button");
                 for (var le = 0; le < logEntry.length; le++) {
@@ -181,18 +189,19 @@
 
             function toggleExpand() {
                 var logContentElement = $("#" + this.id.split("_").pop());
-                var spanInButton = $(this).find("span");
+                //button toggle or logEntry toggle
+                var currentSelection = this.id.includes('expand') ? '' : 'expand_';
+                var spanInButton = $(document.getElementById(currentSelection + this.id).getElementsByClassName("expandArrow")[0]);
                 if ($(logContentElement).attr("expanded") === "0") {
                     logContentElement.animate({height: logContentElement.attr("entry-height")}, 600);
                     scrollToJQElement(logContentElement);
                     $(logContentElement).attr("expanded", "1");
-                    spanInButton.toggleClass("flip");
                 } else {
                     logContentElement.animate({height: logContentElement.attr("min-height")}, 600);
                     scrollToJQElement(logContentElement);
                     $(logContentElement).attr("expanded", "0");
-                    spanInButton.toggleClass("flip");
                 }
+                spanInButton.toggleClass("flip");
             }
 
             function scrollToJQElement(element) {
@@ -209,6 +218,25 @@
                         break;
                     }
                 }
+            }
+            //end expand log content
+
+            function copyToClipboard(content) {
+                var cbInput = $("<input>");
+                $("body").append(cbInput);
+                cbInput.val(window.location.origin + content).select();
+                document.execCommand("copy");
+                cbInput.remove();
+                showToast("Copied To Clipboard");
+            }
+
+            function showToast(content) {
+                var toast = $(".toast");
+                $(".toast span").text(content);
+                toast.animate({opacity: 0.5}, "fast");
+                setTimeout(function () {
+                    toast.animate({opacity: 0.0}, "fast");
+                }, 2000);
             }
         </script>
     </body>
