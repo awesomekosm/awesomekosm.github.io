@@ -22,10 +22,6 @@
     .navbar-header {
         margin-bottom: 10px;
     }
-
-    .logContentEntry {
-        height: 40vh;
-    }
 }
 
 .tab-content {
@@ -44,10 +40,8 @@
     height: 2em;
 }
 
-@media (min-width: 768px) {
-    .logContentEntry {
-        height: 30vh;
-    }
+.logContentEntry {
+    height: 20em;
 }
 
 .logContentEntry {

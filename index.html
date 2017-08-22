@@ -64,11 +64,11 @@
                 </div>
                 <div id="projects" class="tab-pane">
                     <h3 translate="tr.projects">Projects</h3>
-                    <p>Collapsible tabs with limited preview of the content</p>
+                    <p>todo</p>
                 </div>
                 <div id="about" class="tab-pane">
                     <h3 translate="tr.about">About</h3>
-                    <p>Intro from first person and collapsible resume - clickable to download pdf</p>
+                    <p>todo</p>
                 </div>
             </div>
         </div>
@@ -180,7 +180,6 @@
                 for (var le = 0; le < logEntry.length; le++) {
                     $(logEntry[le]).attr("expanded", "0");
                     $(logEntry[le]).attr("entry-height", $(logEntry[le]).prop("scrollHeight"));
-                    $(logEntry[le]).attr("min-height", $(logEntry[le]).prop("offsetHeight"));
                     $(buttonList[le]).attr("id", "expand_" + logEntry[le].id);
                     $(buttonList[le]).on("click", toggleExpand);
                     logEntry[le].toggleExpand = toggleExpand;
@@ -193,11 +192,13 @@
                 var currentSelection = this.id.includes('expand') ? '' : 'expand_';
                 var spanInButton = $(document.getElementById(currentSelection + this.id).getElementsByClassName("expandArrow")[0]);
                 if ($(logContentElement).attr("expanded") === "0") {
-                    logContentElement.animate({height: logContentElement.attr("entry-height")}, 600);
+                    logContentElement.animate({height: logContentElement.attr("entry-height")}, 600, function () {
+                        logContentElement.css("height", "auto");
+                    });
                     scrollToJQElement(logContentElement);
                     $(logContentElement).attr("expanded", "1");
                 } else {
-                    logContentElement.animate({height: logContentElement.attr("min-height")}, 600);
+                    logContentElement.animate({height: "20em"}, 600);
                     scrollToJQElement(logContentElement);
                     $(logContentElement).attr("expanded", "0");
                 }
@@ -224,7 +225,7 @@
             function copyToClipboard(content) {
                 var cbInput = $("<input>");
                 $("body").append(cbInput);
-                cbInput.val(window.location.origin + content).select();
+                cbInput.val(content).select();
                 document.execCommand("copy");
                 cbInput.remove();
                 showToast("Copied To Clipboard");
