@@ -48,6 +48,10 @@
     opacity: 0.8;
 }
 
+#about {
+    margin-bottom: 2em;
+}
+
 #content {
     min-height: calc(100vh - 2em);
 }
@@ -146,6 +150,10 @@
 .peach {
     vertical-align: sub;
     max-width: 30px;
+}
+
+a, a:hover, a:active, a:visited, a:focus {
+    text-decoration:none;
 }
 
 h3 {
