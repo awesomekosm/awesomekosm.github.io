@@ -9,7 +9,9 @@
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
               crossorigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css" rel="stylesheet">
         <link href="css/global.css" rel="stylesheet"/>
+        <link href="css/icons/style.css" rel="stylesheet"/>
         <link href="css/highlight-default.css" rel="stylesheet"/>
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"
@@ -27,12 +29,15 @@
             <div class="page-header hidden-xs">
                 <span class="larger-font">
                     <span translate="tr.name"></span>&nbsp;
-                    <a href="https://www.linkedin.com/in/embarnett"><img src="svg/linkedin.svg" class="links"></a>&nbsp;
-                    <a href="https://github.com/z-emb"><img src="svg/github.svg" class="links"></a>&nbsp;
-                    <a href="https://bitbucket.org/TotallyEMB"><img src="svg/bitbucket.svg" class="links"></a>&nbsp;
+                    <a href="https://www.linkedin.com/in/embarnett"><i class="icon-linkedin links"></i></a>&nbsp;
+                    <a href="https://github.com/z-emb"><i class="icon-github links"></i></a>&nbsp;
+                    <a href="https://bitbucket.org/TotallyEMB"><i class="icon-bitbucket links"></i></a>&nbsp;
                 </span>
-                <a href="https://goo.gl/maps/gDaJPB1ysvC2">
-                    <span class="pull-right larger-font" style="color: peachpuff" translate="tr.zone">USA ATL</span>
+                <a href="https://goo.gl/maps/gDaJPB1ysvC2" target="_blank">
+                    <span class="pull-right larger-font" >
+                        <span style="color: #ff9800cc;" translate="tr.zone">USA ATL</span>
+                        <img class="peach" src="css/icons/peach.svg">
+                    </span>
                 </a>
             </div>
             <div class="navbar-header navbar-default" style="border-bottom: 1px solid #eee;">
@@ -43,9 +48,9 @@
                 </button>
                 <span class="navbar-brand visible-xs">
                     <span translate="tr.name"></span>&nbsp;
-                    <a href="https://www.linkedin.com/in/embarnett"><img src="svg/linkedin.svg" class="links"></a>&nbsp;
-                    <a href="https://github.com/z-emb"><img src="svg/github.svg" class="links"></a>&nbsp;
-                    <a href="https://bitbucket.org/TotallyEMB"><img src="svg/bitbucket.svg" class="links"></a>&nbsp;
+                    <a href="https://www.linkedin.com/in/embarnett"><i class="icon-linkedin links"></i></a>&nbsp;
+                    <a href="https://github.com/z-emb"><i class="icon-github links"></i></a>&nbsp;
+                    <a href="https://bitbucket.org/TotallyEMB"><i class="icon-bitbucket links"></i></a>&nbsp;
                 </span>
             </div>
             <div class="collapse navbar-collapse">
@@ -57,18 +62,25 @@
             </div>
             <div class="tab-content">
                 <div id="log" class="tab-pane active">
-                    <div class="no-pad" id="logContent">
+                    <div id="logContent">
                         <div class="logContentEntry" id="EMBTranslations"
                              w3-include-html="logs/translations-js.html"></div>
                     </div>
                 </div>
-                <div id="projects" class="tab-pane">
+                <div id="projects" class="tab-pane overflow-auto">
                     <h3 translate="tr.projects">Projects</h3>
-                    <p>todo</p>
+                    <p></p>
                 </div>
-                <div id="about" class="tab-pane">
+                <div id="about" class="tab-pane overflow-auto">
                     <h3 translate="tr.about">About</h3>
-                    <p>todo</p>
+                    <p>I've created this pages to keep progress of my work and to motivate myself.</p>
+                    <h3>Contact</h3>
+                    If you want to get in touch <a href="mailto:mark@eugenebar.net" target="_top" class="email">mark@eugenebar.net</a>
+                    <h3>Resume</h3>
+                    <a href="https://drive.google.com/open?id=1ZwNA27xCihAOTFZbnITdpja0UKhUfzma" class="resume-link"
+                       target="_blank">
+                        <div w3-include-html="logs/resume.html"></div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -90,6 +102,11 @@
                     if ($(this).attr('href') !== historyStackTop) {
                         history.pushState(null, null, $(this).attr('href'));
                         historyStackTop = $(this).attr('href');
+                        if (historyStackTop === '#log') {
+                            setTimeout(function () {
+                                realLogHeight();
+                            }, 200);
+                        }
                     }
                 });
                 window.addEventListener("popstate", function (e) {
@@ -183,6 +200,19 @@
                     $(buttonList[le]).attr("id", "expand_" + logEntry[le].id);
                     $(buttonList[le]).on("click", toggleExpand);
                     logEntry[le].toggleExpand = toggleExpand;
+                }
+            }
+
+            function realLogHeight() {
+                if (realLogHeight.calculated === undefined) {
+                    realLogHeight.calculated = false;
+                }
+                if (!realLogHeight.calculated) {
+                    var logEntry = $(".logContentEntry");
+                    for (var le = 0; le < logEntry.length; le++) {
+                        $(logEntry[le]).attr("entry-height", $(logEntry[le]).prop("scrollHeight"));
+                    }
+                    realLogHeight.calculated = true;
                 }
             }
 
