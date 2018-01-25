@@ -22,6 +22,7 @@
                 crossorigin="anonymous"></script>
         <script src="js/w3.js"></script>
         <script src="js/highlight.pack.js"></script>
+        <script src="projects/list.js"></script>
 
     </head>
     <body>
@@ -34,7 +35,7 @@
                     <a href="https://bitbucket.org/TotallyEMB"><i class="icon-bitbucket links"></i></a>&nbsp;
                 </span>
                 <a href="https://goo.gl/maps/gDaJPB1ysvC2" target="_blank">
-                    <span class="pull-right larger-font" >
+                    <span class="pull-right larger-font">
                         <span style="color: #ff9800cc;" translate="tr.zone">USA ATL</span>
                         <img class="peach" src="css/icons/peach.svg">
                     </span>
@@ -68,8 +69,7 @@
                     </div>
                 </div>
                 <div id="projects" class="tab-pane overflow-auto">
-                    <h3 translate="tr.projects">Projects</h3>
-                    <p></p>
+                    <ul id="projects-list"></ul>
                 </div>
                 <div id="about" class="tab-pane overflow-auto">
                     <h3 translate="tr.about">About</h3>
@@ -122,6 +122,7 @@
                     hljs.initHighlighting();
                     logExpandCss();
                     jumpToHash();
+                    renderProjectList();
                 });
             });
 
@@ -269,6 +270,37 @@
                     toast.animate({opacity: 0.0}, "fast");
                 }, 2000);
             }
+
+            function renderProjectList() {
+                var projectTemplate = $('#project-template').text().split(/\$\{(.+?)\}/g);
+
+                function render(props) {
+                    //https://stackoverflow.com/a/39065147
+                    return function (tok, i) {
+                        return (i % 2) ? props[tok] : tok;
+                    };
+                }
+
+                var projectListElem = $("#projects-list");
+
+                projectListElem.append(projectList.map(function (project) {
+                    return projectTemplate.map(render(project)).join('');
+                }));
+            }
+        </script>
+
+        <script id="project-template" type="text/project-template">
+            <li>
+                <a class="hidden-xs col-sm-3"  href="${href}" target="_blank" style="${linkStyle}">
+                    <img src="${imageLink}"/>
+                </a>
+                <div class="col-sm-9 project-info">
+                    <a href="${href}" target="_blank" class="download-link" style="${linkStyle}">
+                        <p class="project-title">${title}</p>
+                    </a>
+                    <p class="project-description">${description}</p>
+                </div>
+            </li>
         </script>
     </body>
 </html>

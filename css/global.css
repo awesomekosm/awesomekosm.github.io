@@ -152,8 +152,49 @@
     max-width: 30px;
 }
 
+#projects-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1em;
+    max-width: 100em;
+}
+
+#projects-list .project-info{
+    padding-left: 0;
+}
+
+#projects-list .download-link:hover > p{
+    color: blue;
+}
+
+#projects-list a {
+    display: inline-block;
+    text-align: center;
+}
+
+#projects-list li img {
+    max-width: 10em;
+    max-height: 10em;
+    padding: 0;
+}
+
+#projects-list .project-title {
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+#projects-list li {
+    padding: 0.75em 0;
+    overflow: auto;
+    transition: background 0.5s;
+}
+
+#projects-list li:hover {
+    background: #eee;
+}
+
 a, a:hover, a:active, a:visited, a:focus {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 h3 {
