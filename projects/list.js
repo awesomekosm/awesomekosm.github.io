@@ -55,10 +55,10 @@ var multisession  = {
 };
 
 var rogatka = {
-    linkStyle: 'pointer-events: none;',
+    href: 'https://rogatkagames.com',
     imageLink: 'projects/untitled.png',
     title: 'Rogatka Games',
-    description: 'Making pieces to put together a networked 3D game. Current progress - OpenGL renderer for truetype and environment, model loaders, memory management, input, simulated timing, sqlite integration, lua integration.'
+    description: 'Making pieces to put together a networked 3D game. Using OpenGL for rending. Yojimbo for networking. SDL2 for window and input management. '
 };
 
 var projectList = [
