@@ -44,7 +44,7 @@ var trendrurer = {
     linkStyle: 'pointer-events: none;',
     imageLink: 'projects/trendrurer.png',
     title: 'TRENDRURER <span style="color:red">Maintenance</span>',
-    description: 'News aggregator at http://trendrurer.com/ Built with spring boot'
+    description: 'News aggregator at https://trendrurer.com/ Built with spring boot'
 };
 
 var multisession  = {
@@ -58,7 +58,7 @@ var rogatka = {
     href: 'https://rogatkagames.com',
     imageLink: 'projects/untitled.png',
     title: 'Rogatka Games',
-    description: 'Making pieces to put together a networked 3D game. Using OpenGL for rending. Yojimbo for networking. SDL2 for window and input management. '
+    description: 'Competitive networked 3rd person game. OpenGL, Yojimbo, SDL2. '
 };
 
 var projectList = [

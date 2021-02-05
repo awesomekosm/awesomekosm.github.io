@@ -5,9 +5,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-              crossorigin="anonymous"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/hack-font/build/web/hack-subset.css" rel="stylesheet">
         <link href="css/global.css" rel="stylesheet"/>
@@ -22,9 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"
                 integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
                 crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-                crossorigin="anonymous"></script>
+        <script src="js/bootstrap.min.js"></script>
         <script src="js/w3.js"></script>
         <script src="js/highlight.pack.js"></script>
         <script src="projects/list.js"></script>
@@ -71,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="tab-content">
                 <div id="log" class="tab-pane active">
                     <div id="logContent">
-                        <div class="logContentEntry" id="EMBTranslations"
+                        <div class="logContentEntry" id="qTranslations"
                              w3-include-html="logs/translations-js.html"></div>
                     </div>
                 </div>
@@ -79,15 +75,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <ul id="projects-list"></ul>
                 </div>
                 <div id="about" class="tab-pane overflow-auto">
-                    <h3 translate="tr.about">About</h3>
+                    <h1 translate="tr.about">About</h1>
                     <p>I've created these pages to keep progress of my work and to motivate myself.</p>
-                    <h3>Contact</h3>
-                    <a href="mailto:mark@eugenebar.net" target="_top" class="email">mark@eugenebar.net</a>
-                    <h3>Resume</h3>
-                    <a href="https://drive.google.com/open?id=1SWygMVCAckDFHZFNd1e-0uwyuYxkNa_7" class="resume-link"
-                       target="_blank">
-                        <div w3-include-html="logs/resume.html"></div>
-                    </a>
+                    <h1>Contact</h1>
+                    <a href="mailto:mark@eugenebar.net" target="_top">mark@eugenebar.net</a>
+                    <h1>Resume</h1>
+                    <iframe src="https://drive.google.com/file/d/1ZEIedyfL-P2LVoKDimvLiTvJISClbQmB/preview" style="width:100%;height:50em"></iframe>
                 </div>
             </div>
         </div>
@@ -134,7 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             });
 
             //define translations
-            var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
+            var qTranslate = function (jsonTranslation, lang, attrName, scope) {
                 var allElements = null;
                 if (scope) {
                     allElements = document.querySelector(scope);
@@ -170,7 +163,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             };
 
             var defaultLanguage = "en";
-            var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");
+            var translationHandle = new qTranslate(translationsJSON, defaultLanguage, "translate");
 
             var translationToggleSelection = $(".translationToggle");
             translationToggleSelection.click(function () {

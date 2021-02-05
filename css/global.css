@@ -80,11 +80,7 @@
     position: absolute;
     margin-top: -25px;
     width: 100%;
-    background-image: linear-gradient(to bottom, transparent, white);
-}
-
-.logContentEntry a {
-    color: #337ab7 !important;
+    background-image: linear-gradient(to bottom, transparent, #222222);
 }
 
 .links {
@@ -115,7 +111,7 @@
 .toast {
     text-align: center;
     position: fixed;
-    background-color: green;
+    background-color: #0ce3ac;
     filter: Alpha(opacity=50);
     opacity: 0.0;
     width: 100%;
@@ -143,13 +139,13 @@
     border: 1px solid #ddd;
 }
 
-.email {
-    color: #337ab7;
-}
-
 .peach {
     vertical-align: sub;
     max-width: 30px;
+}
+
+#logContent pre {
+    padding: 0;
 }
 
 #projects-list {
@@ -164,7 +160,7 @@
 }
 
 #projects-list .download-link:hover > p{
-    color: blue;
+    color: #375a7f;
 }
 
 #projects-list a {
@@ -190,20 +186,23 @@
 }
 
 #projects-list li:hover {
-    background: #eee;
+    background: #2c2c2c;
 }
 
 a, a:hover, a:active, a:visited, a:focus {
     text-decoration: none;
 }
 
-h3 {
-    color: #000 !important;
+html * {
+    font-family: Montserrat, sans-serif !important;
 }
 
-html * {
-    color: #000;
-    font-family: Montserrat, sans-serif !important;
+h1 {
+    padding-top: 8pt;
+    font-weight: 700;
+    font-size: 1.2em;
+    line-height: 1.15;
+    text-align: left;
 }
 
 code {

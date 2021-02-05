@@ -1,11 +1,11 @@
-<h3>Translate Your Website - Javascript <a href="javascript:" class="clipLink" onclick="copyToClipboard(window.location.origin+'/#EMBTranslations');"><i class="icon-copy links"></i></a></h3>
+<h1>Translate Your Website - Javascript <a href="javascript:" class="clipLink" onclick="copyToClipboard(window.location.origin+'/#qTranslations');"><i class="icon-copy links"></i></a></h1>
 <p>7/29/2017</p>
 <br/>
 <p>
-    Translating a page using the<a href="https://github.com/Z-EMB/EMBTranslate"> following script</a>.
+    Translating a page using the<a href="https://github.com/Z-EMB/qTranslate"> following script</a>.
     It's self contained, no 3rd party dependencies; jQuery or Angular.
 </p>
-<pre><code>var EMBTranslate = function (jsonTranslation, lang, attrName, scope) {
+<pre><code>var qTranslate = function (jsonTranslation, lang, attrName, scope) {
     var allElements = null;
     if (scope) {
         allElements = document.querySelector(scope);
@@ -33,7 +33,7 @@
 };</code></pre>
 <p>
     The most basic use case must includes a translation JSON, default language, and an element's attribute name.<br>
-    Default language will be applied on instantiation of EMBTranslate object.
+    Default language will be applied on instantiation of qTranslate object.
 </p>
 <pre><code>var translationsJSON = {
     "tr.log": {"en": "Log", "ru": "Журнал"},
@@ -42,7 +42,7 @@
 };
 
 var defaultLanguage = "en";
-var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "translate");</code></pre>
+var translationHandle = new qTranslate(translationsJSON, defaultLanguage, "translate");</code></pre>
 <p>
     Element's attribute name is defined by you to avoid conflict with other translation mechanisms such as angular's data-translate.<br>
     Inner HTML of those elements will be substituted by values in <b>translationsJSON</b> based on <b>tr</b> key and <b>defaultLanguage</b>
@@ -51,7 +51,7 @@ var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "tra
 &lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#projects&quot; translate=&quot;tr.projects&quot;&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a data-toggle=&quot;tab&quot; href=&quot;#about&quot; translate=&quot;tr.about&quot;&gt;&lt;/a&gt;&lt;/li&gt;</code></pre>
 <p>
-    EMBTranslate exposes <b>translateTo</b> method to dynamically toggle translations.
+    qTranslate exposes <b>translateTo</b> method to dynamically toggle translations.
 </p>
 <pre><code>&lt;a href=&quot;javascript:translationHandle.translateTo('ru');&quot;&gt;Русский&lt;/a&gt;</code></pre>
 <p>
@@ -62,9 +62,9 @@ var translationHandle = new EMBTranslate(translationsJSON, defaultLanguage, "tra
 &lt;/div&gt;
 &lt;script&gt;
     //for id
-    new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;#content&quot;);
+    new qTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;#content&quot;);
     //for class
-    new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;.container&quot;);
+    new qTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;.container&quot;);
     //for element
-    new EMBTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;div&quot;);
+    new qTranslate(translationsJSON, defaultLanguage, &quot;translate&quot;, &quot;div&quot;);
 &lt;/script&gt;</code></pre>
