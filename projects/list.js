@@ -61,8 +61,16 @@ var rogatka = {
     description: 'Competitive networked 3rd person game. OpenGL, Yojimbo, SDL2. '
 };
 
+var shura = {
+    href: 'https://github.com/Z-EMB/Shura',
+    imageLink: 'projects/shura.png',
+    title: 'Shura',
+    description: 'Discord Bot for playing music from youtube and other sources.'
+}
+
 var projectList = [
     rogatka,
+    shura,
     multisession,
     trendrurer,
     chat,
