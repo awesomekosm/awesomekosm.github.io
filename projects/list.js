@@ -54,10 +54,10 @@ var multisession  = {
     description: 'Sharing a session while running many apps on different servers, session synchronization with https://redis.io/ and spring framework. Users navigate between apps seamlessly, no sso.'
 };
 
-var rogatka = {
-    href: 'https://rogatkagames.com',
+var rg = {
+    linkStyle: 'pointer-events: none;',
     imageLink: 'projects/untitled.png',
-    title: 'Rogatka Games',
+    title: 'RG',
     description: 'Competitive networked 3rd person game. OpenGL, Yojimbo, SDL2. '
 };
 
@@ -69,7 +69,7 @@ var shura = {
 }
 
 var projectList = [
-    rogatka,
+    rg,
     shura,
     multisession,
     trendrurer,
