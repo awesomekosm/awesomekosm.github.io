@@ -1,19 +1,19 @@
 var sudokuSolver = {
-    href: 'https://github.com/Z-EMB/SudokuSolver',
+    href: 'https://github.com/awesomekosm/SudokuSolver',
     imageLink: 'projects/ss.png',
     title: 'Sudoku Solver',
     description: 'Iterating over a game board and applying strategies for solving the puzzle <a href="projects/SudokuSolverEXE.zip" style="color:blue">Download Binary Win32</a>'
 };
 
 var decisionTree = {
-    href: 'https://github.com/Z-EMB/DecisionTree',
+    href: 'https://github.com/awesomekosm/DecisionTree',
     imageLink: 'projects/dt.png',
     title: 'Decision Tree',
     description: 'Reads behavior tree from a custom XML, builds in-memory representation and provides a method by which user can input an event and the program will respond with appropriate response. <a href="projects/DecisionTree.zip" style="color:blue">Download Binary Win32</a>'
 };
 
 var connect4 = {
-    href: 'https://github.com/Z-EMB/Connect4',
+    href: 'https://github.com/awesomekosm/Connect4',
     imageLink: 'projects/connect4.png',
     title: 'Connect 4',
     description: 'Min-Max algorithm to play a connect 4 game, human vs ai or human vs human. Input width, height, #in row to win, and time to run recursion (ignored) <a href="projects/Connect4EXE.zip" style="color:blue">Download Binary Win32</a>'
@@ -27,14 +27,14 @@ var ann = {
 };
 
 var gridworldSarsa = {
-    href: 'https://github.com/Z-EMB/SARSA-Learning',
+    href: 'https://github.com/awesomekosm/SARSA-Learning',
     imageLink: 'projects/gridworld.png',
     title: 'Grid World SARSA Learning',
     description: 'World 20x20, a mouse, walls, and a reward. The mouse moves not based on memory of old moves but rather on environmental hints (weights) that are adjusted at each episode(mouses attempt to get to the reward). <a href="projects/GridworldJAR.zip" style="color:blue">Download Grid World Jar</a> <iframe height="175" src="https://www.youtube.com/embed/3F7OTI1TB_k" frameborder="0" style="display: inherit; margin-top:1em" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
 };
 
 var chat = {
-    href: 'https://github.com/Z-EMB/Chat',
+    href: 'https://github.com/awesomekosm/Chat',
     imageLink: 'projects/chat.png',
     title: 'WebSocket Chat',
     description: 'A single-page webchat application with file sharing. Using socket io, vanilla js, Node.js. Worked on with friends, Felipe and Mike'
@@ -62,7 +62,7 @@ var rg = {
 };
 
 var shura = {
-    href: 'https://github.com/Z-EMB/Shura',
+    href: 'https://github.com/awesomekosm/Shura',
     imageLink: 'projects/shura.png',
     title: 'Shura',
     description: 'Discord Bot for playing music from youtube and other sources.'
